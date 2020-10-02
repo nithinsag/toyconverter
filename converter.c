@@ -18,7 +18,32 @@ float getConversionFactor(char *unit)
     return 1000000.0;
   else if (strcmp("g/L", unit) == 0)
     return 1.0;
-  else return -1.0;
+  else
+    return -1.0;
+}
+
+float convertValue(float value, char *from, char *to)
+{
+
+  float baseConversionFactor = getConversionFactor(to);
+
+  if (baseConversionFactor < 0)
+  {
+    printf("given unit %s is not supported", to, 30);
+    exit(1);
+  }
+
+  float inputUnitConversionFactor = getConversionFactor(from);
+  if (inputUnitConversionFactor < 0)
+  {
+    printf("input unit %s from is not supported", from, 30);
+    exit(1);
+  }
+
+  float inputValueinStandard = value / inputUnitConversionFactor;
+
+  float convertedValue = inputValueinStandard * baseConversionFactor;
+  return convertedValue;
 }
 
 // int main(void)

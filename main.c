@@ -15,13 +15,7 @@ int main(int arc, char *argv[])
       exit(1);
    }
 
-   float baseConversionFactor = getConversionFactor(baseUnit);
-
-   if (baseConversionFactor < 0)
-   {
-      printf("given unit %s is not supported", baseUnit, 30);
-      exit(1);
-   }
+  
 
    char *line = NULL;
    size_t len = 0;
@@ -32,18 +26,8 @@ int main(int arc, char *argv[])
 
    char * unit = strtok(NULL, "\n");
 
-   float inputUnitConversionFactor = getConversionFactor(unit);
-   if (inputUnitConversionFactor < 0)
-   {
-      printf("input unit %s from is not supported", unit, 30);
-      exit(1);
-   }
-
-
-   float  inputValueinStandard  =  value / inputUnitConversionFactor;
-
-   float convertedValue = inputValueinStandard * baseConversionFactor;
-
+   float convertedValue = convertValue(value, unit, baseUnit);
+   
    printf("%0.6f %s\n", convertedValue, baseUnit);
 
 
