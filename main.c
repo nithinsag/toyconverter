@@ -25,7 +25,8 @@ int main(int arc, char *argv[])
    float value = atof(valueString);
 
    char * unit = strtok(NULL, "\n");
-
+   
+   // convertValue( value, from, to)
    float convertedValue = convertValue(value, unit, baseUnit);
    
    printf("%0.6f %s\n", convertedValue, baseUnit);
