@@ -1,1 +1,1 @@
-int getConversionFactor(char* unit);
+float getConversionFactor(char* unit);

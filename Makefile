@@ -7,7 +7,7 @@ TEST_DEPS = minunit.h
 all: converter test
 
 converter: converter.o
-	$(CC) -o converter main.c
+	$(CC) -o converter main.c converter.o
 
 %.o: %.c
 	$(CC) -c $< -o $@ 
